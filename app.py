@@ -5,7 +5,10 @@ import joblib
 import json
 import numpy as np
 
-app = FastAPI(title="Iris Classification API", description="API for classifying iris flowers using ML")
+app = FastAPI(
+    title="Iris Classification API", 
+    description="API for classifying iris flowers using ML"
+)
 
 # Load the trained model and target names
 model = joblib.load('model/model.joblib')
@@ -34,7 +37,8 @@ class PredictionResponse(BaseModel):
 
 @app.get("/")
 def read_root():
-    return {"message": "Welcome to the ML Model API"}
+    return {"message": "Welcome to the ML Model API!"
+            "This is a simple API for classifying iris flowers using ML."}
 
 @app.post("/predict/", response_model=PredictionResponse)
 def predict(request: PredictionRequest):

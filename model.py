@@ -16,6 +16,9 @@ model = RandomForestClassifier()
 model.fit(X, y)
 
 # Save the trained model and target names
+print("Saving model...")
 joblib.dump(model, 'model/model.joblib')
+print("Model saved")
 with open('model/target_names.json', 'w') as f:
     json.dump(iris.target_names.tolist(), f)
+print("Target names saved")
